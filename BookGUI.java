@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class RecipeGUI {
-    private BookManager manager; // Reference to the RecipeManager
+public class BookGUI {
+    private BookManager manager; // Reference to the BookManager
     private JFrame frame;          // Main frame for the GUI
     private JTextField idField, titleField, authorField, notesField, searchField; // Input fields
     private JTable bookTable;
@@ -45,13 +45,13 @@ public class RecipeGUI {
         searchField = createLargerTextField();
 
         // Add Labels and Input Fields to the Panel using GridBagLayout
-        addToPanel(inputPanel, new JLabel("Recipe ID:"), gbc, 0, 0);
+        addToPanel(inputPanel, new JLabel("Book ID:"), gbc, 0, 0);
         addToPanel(inputPanel, idField, gbc, 1, 0);
-        addToPanel(inputPanel, new JLabel("Recipe Name:"), gbc, 0, 1);
+        addToPanel(inputPanel, new JLabel("Book Title:"), gbc, 0, 1);
         addToPanel(inputPanel, nameField, gbc, 1, 1);
-        addToPanel(inputPanel, new JLabel("Ingredients:"), gbc, 0, 2);
+        addToPanel(inputPanel, new JLabel("Author:"), gbc, 0, 2);
         addToPanel(inputPanel, ingredientsField, gbc, 1, 2);
-        addToPanel(inputPanel, new JLabel("Instructions:"), gbc, 0, 3);
+        addToPanel(inputPanel, new JLabel("Notes:"), gbc, 0, 3);
         addToPanel(inputPanel, instructionsField, gbc, 1, 3);
         addToPanel(inputPanel, new JLabel("Search by Name/ID:"), gbc, 0, 4);
         addToPanel(inputPanel, searchField, gbc, 1, 4);
@@ -79,19 +79,19 @@ public class RecipeGUI {
                 return false; // All cells are not editable
             }
         };
-        recipeTable = new JTable(tableModel);
-        //recipeTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // Disable auto-resizing of columns
-        recipeTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        bookTable = new JTable(tableModel);
+        //bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // Disable auto-resizing of columns
+        bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 
         // Set column widths
-        TableColumn column = recipeTable.getColumnModel().getColumn(0);
+        TableColumn column = bookTable.getColumnModel().getColumn(0);
         column.setPreferredWidth(50); // ID column
-        column = recipeTable.getColumnModel().getColumn(1);
+        column = bookTable.getColumnModel().getColumn(1);
         column.setPreferredWidth(150); // Title column
-        column = recipeTable.getColumnModel().getColumn(2);
+        column = bookTable.getColumnModel().getColumn(2);
         column.setPreferredWidth(250); // Author column
-        column = recipeTable.getColumnModel().getColumn(3);
+        column = bookTable.getColumnModel().getColumn(3);
         column.setPreferredWidth(400); // Notes column
 
         // Wrap the table in a scroll pane
@@ -163,7 +163,7 @@ public class RecipeGUI {
         return textField;
     }
 
-    // Method to add a new recipe to the database
+    // Method to add a new book to the database
     private void addBooke() {
         String id = idField.getText();
         String title = titleField.getText();
@@ -179,7 +179,7 @@ public class RecipeGUI {
         if (newBookResult==1) {
             JOptionPane.showMessageDialog(frame, "Book added successfully!");
             clearFields();
-            displayRecipes(); // Refresh the list to show the new recipe
+            displayBooks(); // Refresh the list to show the new book
         } else if(newBookResult==0) {
         	clearFields();
             JOptionPane.showMessageDialog(frame, "Book with this ID already exists!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -203,7 +203,7 @@ public class RecipeGUI {
         if (success) {
             JOptionPane.showMessageDialog(frame, "Book deleted successfully!");
             clearFields();
-            displayBooks(); // Refresh the list to show the updated recipes
+            displayBooks(); // Refresh the list to show the updated books
         } else {
             JOptionPane.showMessageDialog(frame, "Book not found!", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -219,7 +219,7 @@ public class RecipeGUI {
         }
 
         String searchTerm = searchField.getText();
-        Recipe[] results = manager.searchBooks(searchTerm);
+        Book[] results = manager.searchBooks(searchTerm);
 
         if (results == null || results.length == 0) {
             JOptionPane.showMessageDialog(null, "No Books found!");
@@ -244,7 +244,7 @@ public class RecipeGUI {
         }
     }
     
-    // Method to display all recipes in the database. 
+    // Method to display all books in the database. 
     private void displayBooks() {
     	
     	tableModel.setRowCount(0); // Clear existing rows
