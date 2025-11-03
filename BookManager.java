@@ -116,8 +116,8 @@ public class BookManager {
     }
     
     /**
-     * This method sorts the recipes in ascending alphabetical order
-     * based on the recipe name.
+     * This method sorts the books in ascending alphabetical order
+     * based on the book title.
      */
     public void sortBooks() {
         // Bubble sort based on title
