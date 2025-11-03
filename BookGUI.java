@@ -108,7 +108,7 @@ public class BookGUI {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addBook()
+                addBook();
             }
         });
 
@@ -116,14 +116,14 @@ public class BookGUI {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteBook()
+                deleteBook();
             }
         });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchBook()
+                searchBook();
             }
         });
 
