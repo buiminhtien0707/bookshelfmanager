@@ -33,21 +33,4 @@ public class Book {
     public String getNotes() {
         return notes;
     }
-
-    // Setters
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
 }
