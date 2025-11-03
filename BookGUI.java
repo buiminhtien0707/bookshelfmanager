@@ -123,7 +123,7 @@ public class BookGUI {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchBook();
+                searchBooks();
             }
         });
 
