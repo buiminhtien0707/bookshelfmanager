@@ -140,6 +140,14 @@ public class BookGUI {
                 clearFields();
             }
         });
+        sortButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            manager.sortBooks();
+            displayBooks();
+            JOptionPane.showMessageDialog(frame, "Books sorted by title!");
+        }
+    });
 
         // Make the frame visible
         frame.setVisible(true);
