@@ -1,4 +1,4 @@
-	/**
+/**
  * This class is for the GUI of the book manager.
  * The class is almost complete.
  * You must only add the code to add a new sort button along with its event handler.
