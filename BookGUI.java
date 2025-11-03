@@ -1,4 +1,4 @@
-/**
+	/**
  * This class is for the GUI of the book manager.
  * The class is almost complete.
  * You must only add the code to add a new sort button along with its event handler.
@@ -48,11 +48,11 @@ public class BookGUI {
         addToPanel(inputPanel, new JLabel("Book ID:"), gbc, 0, 0);
         addToPanel(inputPanel, idField, gbc, 1, 0);
         addToPanel(inputPanel, new JLabel("Book Title:"), gbc, 0, 1);
-        addToPanel(inputPanel, nameField, gbc, 1, 1);
+        addToPanel(inputPanel, titleField, gbc, 1, 1);
         addToPanel(inputPanel, new JLabel("Author:"), gbc, 0, 2);
-        addToPanel(inputPanel, ingredientsField, gbc, 1, 2);
+        addToPanel(inputPanel, authorField, gbc, 1, 2);
         addToPanel(inputPanel, new JLabel("Notes:"), gbc, 0, 3);
-        addToPanel(inputPanel, instructionsField, gbc, 1, 3);
+        addToPanel(inputPanel, notesField, gbc, 1, 3);
         addToPanel(inputPanel, new JLabel("Search by Name/ID:"), gbc, 0, 4);
         addToPanel(inputPanel, searchField, gbc, 1, 4);
 
@@ -108,7 +108,7 @@ public class BookGUI {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addBook
+                addBook()
             }
         });
 
@@ -116,14 +116,14 @@ public class BookGUI {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteBook
+                deleteBook()
             }
         });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchBook
+                searchBook()
             }
         });
 
@@ -164,7 +164,7 @@ public class BookGUI {
     }
 
     // Method to add a new book to the database
-    private void addBooke() {
+    private void addBook() {
         String id = idField.getText();
         String title = titleField.getText();
         String author = authorField.getText();
