@@ -120,16 +120,17 @@ public class BookManager {
      * based on the book title.
      */
     public void sortBooks() {
-        // Bubble sort based on title
-        for (int i = 0; i < bookCount - 1; i++) {
-            for (int j = 0; j < bookCount - i - 1; j++) {
-                if (books[j].getTitle().compareToIgnoreCase(books[j + 1].getTitle()) > 0) {
-                    // Swap books[j] and books[j+1]
-                    Book temp = books[j];
-                    books[j] = books[j + 1];
-                    books[j + 1] = temp;
-                }
+        // Insertion sort based on title
+        for (int i = 1; i < bookCount; i++) {
+            Book key = books[i];
+            int j = i - 1;
+            
+            // Move books that are greater than key to one position ahead
+            while (j >= 0 && books[j].getTitle().compareToIgnoreCase(key.getTitle()) > 0) {
+                books[j + 1] = books[j];
+                j = j - 1;
             }
+            books[j + 1] = key;
         }
     }
 }
