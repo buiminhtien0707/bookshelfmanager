@@ -18,6 +18,8 @@ public class BookGUI {
     private JTextField idField, titleField, authorField, notesField, searchField; // Input fields
     private JTable bookTable;
     private DefaultTableModel tableModel;
+    private JButton displayButton;
+    private JButton deleteButton;
 
     // Constructor
     public BookGUI(BookManager manager) {
@@ -60,10 +62,15 @@ public class BookGUI {
         JButton addButton = new JButton("Add Book");
         JButton deleteButton = new JButton("Delete Book");
         JButton searchButton = new JButton("Search Books");
-        JButton displayButton = new JButton("Display All Books");
+        JButton displayButton = new JButton("Display All Books"); 
         JButton clearButton = new JButton("Clear Fields");
         JButton sortButton = new JButton("Sort");
-
+        //Constructor
+        this.displayButton = displayButton;
+        this.deleteButton = deleteButton;
+        //Disable display button initially
+        displayButton.setEnabled(false);
+        deleteButton.setEnabled(false);
         // Add Buttons to the Panel
         addToPanel(inputPanel, addButton, gbc, 0, 5);
         addToPanel(inputPanel, deleteButton, gbc, 1, 5);
@@ -131,6 +138,7 @@ public class BookGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayBooks();
+                 displayButton.setEnabled(false);
             }
         });
 
@@ -233,6 +241,7 @@ public class BookGUI {
             JOptionPane.showMessageDialog(null, "No Books found!");
         } else {
             updateTable(results);
+            displayButton.setEnabled(true);
         }
         clearFields();
     }
