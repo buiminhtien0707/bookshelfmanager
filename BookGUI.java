@@ -196,6 +196,7 @@ public class BookGUI {
             JOptionPane.showMessageDialog(frame, "Book added successfully!");
             clearFields();
             displayBooks(); // Refresh the list to show the new book
+            deleteButton.setEnabled(true);
         } else if(newBookResult==0) {
         	clearFields();
             JOptionPane.showMessageDialog(frame, "Book with this ID already exists!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -220,6 +221,9 @@ public class BookGUI {
             JOptionPane.showMessageDialog(frame, "Book deleted successfully!");
             clearFields();
             displayBooks(); // Refresh the list to show the updated books
+            if (manager.getBookCount() == 0) {
+                deleteButton.setEnabled(false);
+            }
         } else {
             JOptionPane.showMessageDialog(frame, "Book not found!", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -242,6 +246,7 @@ public class BookGUI {
         } else {
             updateTable(results);
             displayButton.setEnabled(true);
+             
         }
         clearFields();
     }
